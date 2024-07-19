@@ -1,6 +1,7 @@
 const fs = require('fs/promises');
 const createError = require('../utils/createError');
 const roomService = require('../services/room-service');
+const prisma = require('../models/prisma');
 const roomController = {};
 
 roomController.createRoom = async(req,res,next)=>{
@@ -23,6 +24,24 @@ roomController.getAvailableRoom = async(req,res,next)=>{
   }
 }
 
+roomController.statusAvailable = async(req,res,next)=>{
+  try {
+    console.log('ttttttttttttrrtrtrtrtrtrtrtrtrtrtrtrtrtrtrt')
+    const rs = await prisma.room.findMany({
+      where:{
+        availableRoom : 'TRUE',
+        branchId: 1
+      },
+    })
+    console.log('rssssssssssssssssssss',rs)
+    if(rs.length === 0){
+      return res.status(300).json({message: "full room"})
+    }
+    res.status(200).json({message: "available room"})
+  } catch (error) {
+    next(error)
+  }
+}
 
 
 

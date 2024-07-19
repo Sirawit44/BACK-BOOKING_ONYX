@@ -12,7 +12,7 @@ reservationRouter.post('/',reservationController.createReservation )
 reservationRouter.get('/',reservationController.userGetReservation)
 
 //delete
-reservationRouter.delete('/cancel/:id',reservationController.cancelReservation)
+reservationRouter.patch('/cancel/:id',reservationController.cancelReservation)
 
 
 

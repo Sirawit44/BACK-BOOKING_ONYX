@@ -28,6 +28,7 @@ model Reservation {
   checkOutDate    DateTime?       @db.Timestamp(0)
   totalPrice      String
   bookingDate     DateTime        @default(now()) @db.Timestamp(0)
+  isDelete        Boolean         @default(false)
 
   user            Users           @relation(fields: [userId], references: [id])
   room            Room            @relation(fields: [roomId], references: [id])

@@ -8,8 +8,10 @@ const roomRouter = express.Router();
 // create
 roomRouter.post('/', roomController.createRoom)
 
+roomRouter.get('/statusAvailable', roomController.statusAvailable)
 // get
 roomRouter.get('/',roomController.getAvailableRoom)
+
 
 
 

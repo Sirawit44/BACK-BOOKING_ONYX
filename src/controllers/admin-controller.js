@@ -27,5 +27,16 @@ adminController.updatePayment = async (req,res,next)=>{
   }
 }
 
+// adminController.updateReservation = async (req,res,next)=>{
+//   try {
+//     let roomId;
+//     const ad = await adminService.getAllReservation(roomId)
+//     console.log(ad)
+//     const deletes = await adminService.deleteUser(ad.userId)
+//   } catch (error) {
+//     next(error)
+//   }
+// }
+
 
 module.exports = adminController;

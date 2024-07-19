@@ -29,6 +29,7 @@ adminService.getAllReservation =() => prisma.reservation.findMany({
         imageSlip:true,
       },
     },
+    id:true,
     userId:true,
     roomId:true,
     bookingDate:true,
@@ -38,4 +39,6 @@ adminService.getAllReservation =() => prisma.reservation.findMany({
   }
 });
 
+// adminService.updateReservation = ()=> prisma.reservation.update({where})
+// adminService.deleteUser = (id) => prisma.reservation.delete({where:id})
 module.exports = adminService;

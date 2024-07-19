@@ -8,13 +8,14 @@ const paymentController = {};
 
 paymentController.createPayment = async (req, res, next) => {
   try {
+    console.log("createPayment")
     const input = req.files;
     const result = await uploadService.upload(req.files.imageSlip[0].path);
     const rs = await paymentService.createPayment({
       imageSlip: result,
       reservationId: +req.body.reservationId,
     });
-    res.status(200).json({ rs });
+    res.status(200).json({message: "success"});
   } catch (err) {
     next(err);
   } finally {
