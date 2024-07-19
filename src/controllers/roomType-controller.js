@@ -2,15 +2,15 @@ const fs = require('fs/promises');
 const uploadService = require("../services/upload-service");
 const { upload } = require("../services/upload-service")
 const createError = require('../utils/createError');
-const roomTypeService = require('../services/roomtype-service');
+const typeRoomService = require('../services/typeRoom-service');
 
-roomTypeService
+
 const roomTypeController = {}
 
 roomTypeController.createRoomType = async(req,res,next)=>{
   try {
     const input = req.body;
-    const rs = await roomTypeService.createRoomType(input);
+    const rs = await typeRoomService.roomType(input);
     console.log(rs)
   } catch (error) {
     next(error)
@@ -18,15 +18,15 @@ roomTypeController.createRoomType = async(req,res,next)=>{
 
 };
 
-roomTypeController.getRoomType = async(req,res,next)=>{
- const rs = await roomTypeService.getAllRoomType()
+roomTypeController.getTypeRoom = async(req,res,next)=>{
+ const rs = await typeRoomService.getAllRoomType()
  res.status(200).json(rs)
 }
 
 roomTypeController.getRoomTypeById = async(req,res,next)=>{
   console.log(req.params.id)
   const roomTypeId = req.params.id
-  const rs = await roomTypeService.getRoomTypeById(+roomTypeId)
+  const rs = await typeRoomService.getRoomTypeById(+roomTypeId)
   res.status(200).json(rs)
 }
 
@@ -48,7 +48,7 @@ roomTypeController.updateImageType = async(req,res,next)=>{
     },{})
 
 
-    await roomTypeService.updateRoomTypeById(data, +req.body.id);
+    await typeRoomService.updateRoomTypeById(data, +req.body.id);
 
     res.status(200).json(data)
   }catch(err){

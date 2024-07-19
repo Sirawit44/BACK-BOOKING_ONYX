@@ -1,16 +1,16 @@
 const express = require('express');
 const upload = require('../middlewares/upload');
-const { validateImageHeaderOrMapHeader } = require('../middlewares/validator');
+// const { validateImageHeaderOrMapHeader } = require('../middlewares/validator');
 const roomTypeController = require('../controllers/roomType-controller');
 
 
 const roomTypeRouter = express.Router();
 
 // create
-roomTypeRouter.post('/', roomTypeController.createRoomType)
+roomTypeRouter.post('/', roomTypeController.createRoomType )
 
 // get
-roomTypeRouter.get('/', roomTypeController.getRoomType)
+roomTypeRouter.get('/', roomTypeController.getTypeRoom)
 
 roomTypeRouter.get('/:id', roomTypeController.getRoomTypeById)
 
